@@ -16,7 +16,6 @@ session_start();
 	<div class="wrapper">
 	<?php
 	include '../model/pdoconnect.php';
-	include '../model/model.php'
 	?>
 
 <?php
@@ -28,9 +27,17 @@ session_start();
 		$del_id_task=$_GET['del_id_task'];
 		$upd_raedy=$_GET['upd_raedy'];
 		$upd_unraedy=$_GET['upd_unraedy'];
+
+		spl_autoload_register(function ($class) 
+    {
+         if(file_exists('../model/' . $class . '.php'))
+        {
+            require_once('../model/' . $class . '.php');
+        }
+    });
 		
 
-		$model = new model($pdo);
+		$model = new tasklist($pdo);
 		$model->add_tasks($_SESSION['user']['id'],$text_for_task,$add_task);
 		$model->unready($upd_unraedy);
 		$model->ready($upd_raedy);
@@ -38,8 +45,9 @@ session_start();
 		$model->ready_all($ready_all,$_SESSION['user']['id']);
 		$model->remove_all($_SESSION['user']['id'],$remove_all);
 		$out = $model->out_tasks($_SESSION['user']['id']);
-		
+
 			include "../view/Tasklist.php";
+			
 		?>
 	</div>
 
