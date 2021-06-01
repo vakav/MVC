@@ -8,6 +8,6 @@ include '../model/model.php';
 $model = new model($pdo);
 $model->login_in($_POST['auth'], $_POST['login'],$_POST['password']);
 
-include 'form_auth.php';
+include '../view/form_auth.php';
 
 ?>

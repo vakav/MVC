@@ -61,23 +61,7 @@ class model{
 			$out_task=$run_out_task;
 			return $out_task;
 		}
-		public function session_unset($exit)
-		{
-			if ($exit) {
-				session_unset();
-			}
-		}
-		public function SESSION($login_auth,$pass_auth,$auth)
-		{
-			if ($auth) {
-			$_SESSION['login_auth']=$login_auth;
-			$_SESSION['pass_auth']=md5($pass_auth);
-			$_SESSION['auth']=$auth;
-			}
-			
-		}
 		
-
 		public function login_in($auth_post,$login_post,$pass_post)
 		{		
 				if(isset($_SESSION['user'])){
