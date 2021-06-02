@@ -14,19 +14,9 @@ session_start();
 	<input type="submit" name="logout" value="Выход" class="IN">
 </form>
 	<div class="wrapper">
-	<?php
-	include '../model/pdoconnect.php';
-	?>
 
 <?php
-		$add_task=$_POST['add_task'];
-		$text_for_task=$_POST['text_for_task'];
-		$remove_all=$_POST['remove_all'];
-		$ready_all=$_POST['ready_all'];
-		$red_id_task=$_GET['red_id_task'];
-		$del_id_task=$_GET['del_id_task'];
-		$upd_raedy=$_GET['upd_raedy'];
-		$upd_unraedy=$_GET['upd_unraedy'];
+include '../model/pdoconnect.php';
 
 		spl_autoload_register(function ($class) 
     {
