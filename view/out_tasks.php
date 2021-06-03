@@ -10,16 +10,17 @@ foreach ($out as $out_task) {
 					</div>
 						<div class='aligin_buttouns_task_list'>
 							<div class='buttons'>
-							<a href=?upd_raedy=$out_task[id]>
+							<form method='POST'>
 								<input type='submit'
 								name='READY' value='READY' class='READY'
+								'id='$id_upd_ready=$out_task[id]'
 								>
-								</a>
+								</form>
 							</div>
 							<div class='buttons'>
-							<a href=?del_id_task=$out_task[id]>
+							
 								<input type='submit' name='DELETE' value='DELETE' class='DELETE'>
-								</a>
+								
 							</div>
 						</div>
 				</div>
@@ -38,10 +39,12 @@ else
 					</div>
 						<div class='aligin_buttouns_task_list'>
 							<div class='buttons'>
-							<a href=?upd_unraedy=$out_task[id]>
-								<input type='submit' name='UNREADY' value='UNREADY' class='UNREADY
-								'>
-								</a>
+							<form method='POST'>
+								<input type='submit' name='UNREADY'
+								value='UNREADY' class='UNREADY
+								'id='$id_upd_unready=$out_task[id]'>
+								
+								</form>
 							</div>
 							<div class='buttons'>
 								<a href=?del_id_task=$out_task[id]>
@@ -55,4 +58,6 @@ else
 			</div>
 		</div>";
 	} 
+	var_dump($id_upd_unready);
+	var_dump($id_upd_ready);
 }

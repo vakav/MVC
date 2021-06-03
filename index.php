@@ -1,11 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Tasklist</title>
-</head>
-<link rel="stylesheet" type="text/css" href="styles/main.css">
-<body>
-<a href="pages/login_in.php">вход</a>
-</div>
-</body>
-</html>
+<?php
+session_start();
+
+include "model/pdoconnect.php";
+ 
+spl_autoload_register(function ($c) 
+    {
+         if(file_exists('model/' . $c . '.php'))
+        {
+            require_once('model/' . $c . '.php');
+        }
+        elseif(file_exists('controller/' . $c . '.php'))
+        {
+            require_once('controller/' . $c . '.php');
+        }
+        
+    });
+
+ 
+ 
+
+if($_GET['option']) {
+ $class = trim(strip_tags($_GET['option']));
+}
+else {
+ $class = 'index_controller'; 
+}
+
+ if(class_exists($class)) {
+ 
+ $obj = new $class;
+ }
+ else {
+ 	var_dump($class);
+ }
+
+?>

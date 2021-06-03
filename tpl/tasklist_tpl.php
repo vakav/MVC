@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,27 +12,39 @@ session_start();
 	<div class="wrapper">
 
 <?php
-include '../model/pdoconnect.php';
 
-		spl_autoload_register(function ($class) 
-    {
-         if(file_exists('../model/' . $class . '.php'))
-        {
-            require_once('../model/' . $class . '.php');
-        }
-    });
+if($_GET['option']) {
+ $class = trim(strip_tags($_GET['option']));
+}
+else {
+ $class = 'index_controller'; 
+}
+
+
+		include 'model/pdoconnect.php';
+
+		$add_task=$_POST['add_task'];
+		$text_for_task=$_POST['text_for_task'];
+		$upd_unraedy=$_POST['UNREADY'];
+		$upd_raedy=$_POST['READY'];
+		$del_id_task=$_GET['del_id_task'];
+		$ready_all=$_POST['ready_all'];
+		$remove_all=$_POST['remove_all'];
+	
 		
 
-		$model = new tasklist($pdo);
+		$model = new model($pdo);
 		$model->add_tasks($_SESSION['user']['id'],$text_for_task,$add_task);
-		$model->unready($upd_unraedy);
-		$model->ready($upd_raedy);
+		
 		$model->del_task($del_id_task);
 		$model->ready_all($ready_all,$_SESSION['user']['id']);
 		$model->remove_all($_SESSION['user']['id'],$remove_all);
 		$out = $model->out_tasks($_SESSION['user']['id']);
+		include "view/tasklist_view.php";
 
-			include "../view/Tasklist.php";
+		$model->unready($upd_unraedy,$id_upd_unready);
+		$model->ready($upd_raedy,$id_upd_ready);
+			var_dump($id_upd_unready);
 			
 		?>
 	</div>
