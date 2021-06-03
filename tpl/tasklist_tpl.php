@@ -13,12 +13,6 @@
 
 <?php
 
-if($_GET['option']) {
- $class = trim(strip_tags($_GET['option']));
-}
-else {
- $class = 'index_controller'; 
-}
 
 
 		include 'model/pdoconnect.php';
