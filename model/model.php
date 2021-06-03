@@ -1,15 +1,7 @@
 <?php
 
-class model{
-
-	
-		protected $pdo;
-	        public function __construct($pdo)
-	        {
-	            $this->pdo = $pdo;
-	        }
-
-	        
+class model extends pdoconnect{
+    
 	        public function add_tasks($user_id,$text_for_task, $add_task)
 				{
 					$add_task=$_POST['add_task'];
@@ -83,7 +75,7 @@ class model{
 		public function log($auth_post,$login_post,$pass_post)
 		{		
 				if(isset($_SESSION['user'])){
-			header('Location: ?option=tasklist_controller');
+			header('Location: ?c=index_controller&option=tasklist_controller');
 			}
 
 			if(isset($auth_post)){
@@ -101,12 +93,12 @@ class model{
 		 {
 			 $_SESSION['user'] = [
 			 		"id" => $out_user['id']];	 
-		   header('Location: ?option=tasklist_controller');
+		   header('Location: ?c=index_controller&option=tasklist_controller');
 			}
 			else
 			{
 				$_SESSION['message']='ошибка';
-				header('Location: ?option=auth');
+				header('Location: ?c=index_controller&option=auth');
 				
 			}
 				if($true_user==0)
@@ -126,12 +118,12 @@ class model{
 						$out_user=$auth_user->fetch();
 						$_SESSION['user'] = [
 			 		"id" => $out_user['id']];	 
-			 		header('Location: ?option=tasklist_controller');
+			 		header('Location: ?c=index_controller&option=tasklist_controller');
 					}
 					else
 					{
 						echo "qweqwe";
-						header('Location: ?option=auth');
+						header('Location: ?c=index_controller&option=auth');
 					}
 				
 				}

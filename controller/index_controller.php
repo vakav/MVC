@@ -2,14 +2,25 @@
 
 class index_controller
 {
-	        protected $pdo;
-	        public function __construct($pdo)
+	        public function button_index()
 	        {
-	            $this->pdo = $pdo;
 	             include "view/index_view.php";
 	        }
 
-	      
+	        public function auth()
+			{
+			include"tpl/login_in.php";
+		
+			}
+			public function tasklist_controller()
+			{
+
+				include "tpl/tasklist_tpl.php";
+		
+
+			}
+
 }
+
 
 ?>

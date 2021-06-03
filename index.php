@@ -18,16 +18,20 @@ spl_autoload_register(function ($c)
  
  
 
-if($_GET['option']) {
- $class = trim(strip_tags($_GET['option']));
+if($_GET['c'] && $_GET['option']) {
+ $class = $_GET['c'];
+ $option = $_GET['option'];
 }
 else {
  $class = 'index_controller'; 
+ $option = 'button_index';
 }
 
- if(class_exists($class)) {
+
+ if(method_exists($class, $option)) {
  
  $model = new $class;
+ $model->$option();
  }
  else {
  	var_dump($class);

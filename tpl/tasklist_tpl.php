@@ -11,20 +11,9 @@
 </form>
 	<div class="wrapper">
 
+
+
 <?php
-
-
-
-
-		$add_task=$_POST['add_task'];
-		$text_for_task=$_POST['text_for_task'];
-		$upd_unready=$_POST['UNREADY'];
-		$upd_raedy=$_POST['READY'];
-		$del_id_task=$_GET['del_id_task'];
-		$ready_all=$_POST['ready_all'];
-		$remove_all=$_POST['remove_all'];
-	
-		
 
 		$model = new model($pdo);
 		$model->add_tasks($_SESSION['user']['id'],$text_for_task,$add_task);
@@ -37,6 +26,8 @@
 
 		$model->unready($upd_unready,$id_upd_unready);
 		$model->ready($upd_raedy,$id_upd_ready);
+
+
 			
 			
 		?>
