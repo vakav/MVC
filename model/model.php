@@ -25,21 +25,25 @@ class model{
 			}
 		}
 
-		public function unready($upd_unraedy)
+		public function unready($upd_unready,$id_upd_unready)
 		{
 			
-
-			$str_upd_task_unredy="UPDATE `tasks` SET `status` = '0' WHERE `tasks`.`id` = '$upd_unraedy'";
-			var_dump($str_upd_task_unraedy);
-			$run_upd_task_unready=$this->pdo->query($str_upd_task_unredy);
+			if ($upd_unready) {
+				$str_upd_task_unready="UPDATE `tasks` SET `status` = '0' WHERE `tasks`.`id` = '$id_upd_unready'";
+			var_dump($str_upd_task_unready);
+			$run_upd_task_unready=$this->pdo->query($str_upd_task_unready);
+			}
+			
 		}
-		public function ready($upd_raedy)
+		public function ready($upd_raedy,$id_upd_ready)
 		{
-			
-
-				$str_upd_task_raedy="UPDATE `tasks` SET `status` = '1' WHERE `tasks`.`id` = '$upd_raedy'";
+			if ($upd_raedy) {
+			$str_upd_task_raedy="UPDATE `tasks` SET `status` = '1' WHERE `tasks`.`id` = '$id_upd_ready'";
 				var_dump($str_upd_task_raedy);
 			$run_upd_task_ready=$this->pdo->query($str_upd_task_raedy);
+			}
+
+				
 		}
 		public function del_task($del_id_task)
 		{
@@ -79,7 +83,7 @@ class model{
 		public function log($auth_post,$login_post,$pass_post)
 		{		
 				if(isset($_SESSION['user'])){
-			header('Location: ?option=tasklist');
+			header('Location: ?option=tasklist_controller');
 			}
 
 			if(isset($auth_post)){

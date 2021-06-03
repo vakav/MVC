@@ -1,8 +1,7 @@
 <?php
 session_start();
 
-include "model/pdoconnect.php";
- 
+include 'model/pdoconnect.php';
 spl_autoload_register(function ($c) 
     {
          if(file_exists('model/' . $c . '.php'))
@@ -28,7 +27,7 @@ else {
 
  if(class_exists($class)) {
  
- $obj = new $class;
+ $model = new $class;
  }
  else {
  	var_dump($class);

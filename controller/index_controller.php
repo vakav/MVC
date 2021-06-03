@@ -2,10 +2,14 @@
 
 class index_controller
 {
-	function __construct()
-	{
-		include "view/index_view.php";
-	}
+	        protected $pdo;
+	        public function __construct($pdo)
+	        {
+	            $this->pdo = $pdo;
+	             include "view/index_view.php";
+	        }
+
+	      
 }
 
 ?>
