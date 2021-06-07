@@ -9,7 +9,10 @@ class index_controller
 
 	        public function auth()
 			{
-			include"tpl/login_in.php";
+				$model = new model($pdo);
+				$model->log($_POST['auth'], $_POST['login'],$_POST['password']);
+				include 'view/form_auth.php';
+
 		
 			}
 			public function tasklist_controller()
