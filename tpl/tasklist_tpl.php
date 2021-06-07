@@ -6,37 +6,18 @@
 
 <link rel="stylesheet" type="text/css" href="../styles/main.css">
 <body>
-	<form method="POST" action="../view/logout.php">
+	<form method="POST" action="?c=index_controller&option=logout">
 	<input type="submit" name="logout" value="Выход" class="IN">
 </form>
 <a href=""></a>
 	<div class="wrapper">
-
-
-
 <?php
+$model = new model($pdo);
+$out = $model->out_tasks($_SESSION['user']['id']);
+include "view/tasklist_view.php";
 
 
-		$del_id_task=$_GET['del_id_task'];
-		$upd_raedy=$_GET['upd_raedy'];
-		$upd_unraedy=$_GET['upd_unraedy'];
-
-		$model = new model($pdo);
-		$model->add_tasks($_SESSION['user']['id'],$text_for_task,$add_task);
-		
-		$model->del_task($del_id_task);
-		$model->ready_all($ready_all,$_SESSION['user']['id']);
-		$model->remove_all($_SESSION['user']['id'],$remove_all);
-		$out = $model->out_tasks($_SESSION['user']['id']);
-		include "view/tasklist_view.php";
-
-		$model->unready($upd_unready,$id_upd_unready);
-		$model->ready($upd_raedy,$id_upd_ready);
-
-
-			
-			
-		?>
+?>
 	</div>
 
 </body>

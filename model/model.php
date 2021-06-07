@@ -18,20 +18,17 @@ class model extends pdoconnect{
 		}
 
 		public function unready($upd_unready)
-		{
-			
-			
+		{	
+			$upd_unready=$_GET['upd_unready'];
 				$str_upd_task_unready="UPDATE `tasks` SET `status` = '0' WHERE `tasks`.`id` = '$upd_unready'";
-			var_dump($str_upd_task_unready);
 			$run_upd_task_unready=$this->pdo->query($str_upd_task_unready);
 			
 			
 		}
 		public function ready($upd_raedy)
-		{
-			
+		{	
+			$upd_ready=$_GET['upd_ready'];
 			$str_upd_task_raedy="UPDATE `tasks` SET `status` = '1' WHERE `tasks`.`id` = '$upd_raedy'";
-				var_dump($str_upd_task_raedy);
 			$run_upd_task_ready=$this->pdo->query($str_upd_task_raedy);
 			
 
@@ -75,7 +72,7 @@ class model extends pdoconnect{
 		public function log($auth_post,$login_post,$pass_post)
 		{		
 				if(isset($_SESSION['user'])){
-			header('Location: ?c=index_controller&option=tasklist_controller');
+			header('Location: ?c=index_controller&option=tasklist');
 			}
 
 			if(isset($auth_post)){
@@ -95,7 +92,7 @@ class model extends pdoconnect{
 		  if($true_user==1)
 			{
 				$_SESSION['user'] = ["id" => $out_user['id']];	 
-		   		header('Location: ?c=index_controller&option=tasklist_controller');
+		   		header('Location: ?c=index_controller&option=tasklist');
 			}
 			else
 			{
@@ -120,7 +117,7 @@ class model extends pdoconnect{
 						$out_user=$auth_user->fetch();
 						$_SESSION['user'] = [
 			 		"id" => $out_user['id']];	 
-			 		header('Location: ?c=index_controller&option=tasklist_controller');
+			 		header('Location: ?c=index_controller&option=tasklist');
 				}
 					else
 					{

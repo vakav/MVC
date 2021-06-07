@@ -10,12 +10,11 @@ foreach ($out as $out_task) {
 						$out_task[description]
 					</div>
 						<div class='aligin_buttouns_task_list'>
-							<div class='buttons'>
 							<a href='?c=index_controller&option=tasklist_controller?upd_ready=$out_task[id]'>
+							<div class='buttons'>
+							
 								<input type='submit'
-								name='READY' value='READY' class='READY'
-								'
-								>
+								name='READY' value='READY' class='READY'>
 								</a>
 							</div>
 							<div class='buttons'>
@@ -42,8 +41,7 @@ else
 							<div class='buttons'>
 							<a href='?c=index_controller&option=tasklist_controller?upd_unready=$out_task[id]'>
 								<input type='submit' name='UNREADY'
-								value='UNREADY' class='UNREADY>
-								
+								value='UNREADY' class='UNREADY'>
 								</a>
 							</div>
 							<div class='buttons'>
@@ -59,3 +57,4 @@ else
 		</div>";
 	} 
 }
+?>
