@@ -25,10 +25,10 @@ class model extends pdoconnect{
 			
 			
 		}
-		public function ready($upd_raedy)
+		public function ready($upd_ready)
 		{	
 			$upd_ready=$_GET['upd_ready'];
-			$str_upd_task_raedy="UPDATE `tasks` SET `status` = '1' WHERE `tasks`.`id` = '$upd_raedy'";
+			$str_upd_task_raedy="UPDATE `tasks` SET `status` = '1' WHERE `tasks`.`id` = '$upd_ready'";
 			$run_upd_task_ready=$this->pdo->query($str_upd_task_raedy);
 			
 

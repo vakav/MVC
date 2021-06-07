@@ -10,7 +10,7 @@ foreach ($out as $out_task) {
 						$out_task[description]
 					</div>
 						<div class='aligin_buttouns_task_list'>
-							<a href='?c=index_controller&option=tasklist_controller?upd_ready=$out_task[id]'>
+							<a href='?c=index_controller&option=tasklist&upd_ready=$out_task[id]'>
 							<div class='buttons'>
 							
 								<input type='submit'
@@ -39,7 +39,7 @@ else
 					</div>
 						<div class='aligin_buttouns_task_list'>
 							<div class='buttons'>
-							<a href='?c=index_controller&option=tasklist_controller?upd_unready=$out_task[id]'>
+							<a href='?c=index_controller&option=tasklist&upd_unready=$out_task[id]'>
 								<input type='submit' name='UNREADY'
 								value='UNREADY' class='UNREADY'>
 								</a>
