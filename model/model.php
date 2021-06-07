@@ -72,7 +72,8 @@ class model extends pdoconnect{
 		public function log($auth_post,$login_post,$pass_post)
 		{		
 				if(isset($_SESSION['user'])){
-			header('Location: ?c=index_controller&option=tasklist');
+			//header('Location: ?c=index_controller&option=tasklist');
+			$link="1";
 			}
 
 			if(isset($auth_post)){
@@ -92,12 +93,14 @@ class model extends pdoconnect{
 		  if($true_user==1)
 			{
 				$_SESSION['user'] = ["id" => $out_user['id']];	 
-		   		header('Location: ?c=index_controller&option=tasklist');
+		   		//header('Location: ?c=index_controller&option=tasklist');
+				$link = "2";
 			}
 			else
 			{
 				$_SESSION['message']='ошибка';
-				header('Location: ?c=index_controller&option=auth');
+				//header('Location: ?c=index_controller&option=auth');
+				$link = "3";
 				
 			}
 				if($true_user==0)
@@ -117,13 +120,10 @@ class model extends pdoconnect{
 						$out_user=$auth_user->fetch();
 						$_SESSION['user'] = [
 			 		"id" => $out_user['id']];	 
-			 		header('Location: ?c=index_controller&option=tasklist');
+			 		//header('Location: ?c=index_controller&option=tasklist');
+			 		$link = "4";
 				}
-					else
-					{
-						echo "qweqwe";
-						header('Location: ?c=index_controller&option=auth');
-					}
+					
 				
 				}
 			}
@@ -133,7 +133,7 @@ class model extends pdoconnect{
 				echo  "Invalid username or password!";
 			}
 		}
-		
+		return $link;
 
 		}
 

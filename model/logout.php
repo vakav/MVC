@@ -7,7 +7,7 @@ session_start();
 $logout=$_POST['logout'];
 if (isset($_POST['logout'])) {
 	session_unset();
-	header('Location: ?option=auth');
+	header('Location: ?c=index_controller&option=auth');
 }
 
 }
