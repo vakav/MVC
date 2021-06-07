@@ -17,23 +17,23 @@ class model extends pdoconnect{
 			}
 		}
 
-		public function unready($upd_unready,$id_upd_unready)
+		public function unready($upd_unready)
 		{
 			
-			if ($upd_unready) {
-				$str_upd_task_unready="UPDATE `tasks` SET `status` = '0' WHERE `tasks`.`id` = '$id_upd_unready'";
+			
+				$str_upd_task_unready="UPDATE `tasks` SET `status` = '0' WHERE `tasks`.`id` = '$upd_unready'";
 			var_dump($str_upd_task_unready);
 			$run_upd_task_unready=$this->pdo->query($str_upd_task_unready);
-			}
+			
 			
 		}
-		public function ready($upd_raedy,$id_upd_ready)
+		public function ready($upd_raedy)
 		{
-			if ($upd_raedy) {
-			$str_upd_task_raedy="UPDATE `tasks` SET `status` = '1' WHERE `tasks`.`id` = '$id_upd_ready'";
+			
+			$str_upd_task_raedy="UPDATE `tasks` SET `status` = '1' WHERE `tasks`.`id` = '$upd_raedy'";
 				var_dump($str_upd_task_raedy);
 			$run_upd_task_ready=$this->pdo->query($str_upd_task_raedy);
-			}
+			
 
 				
 		}

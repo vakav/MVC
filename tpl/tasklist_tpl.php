@@ -9,11 +9,17 @@
 	<form method="POST" action="../view/logout.php">
 	<input type="submit" name="logout" value="Выход" class="IN">
 </form>
+<a href=""></a>
 	<div class="wrapper">
 
 
 
 <?php
+
+
+		$del_id_task=$_GET['del_id_task'];
+		$upd_raedy=$_GET['upd_raedy'];
+		$upd_unraedy=$_GET['upd_unraedy'];
 
 		$model = new model($pdo);
 		$model->add_tasks($_SESSION['user']['id'],$text_for_task,$add_task);

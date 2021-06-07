@@ -2,7 +2,6 @@
 foreach ($out as $out_task) { 
  if ($out_task['status']==0) { 
 
- 	$id_upd_ready=$out_task['id'];
  	
 	echo "<div class='Tasks'>
 			<div class='wrapper_for_task'>
@@ -12,12 +11,12 @@ foreach ($out as $out_task) {
 					</div>
 						<div class='aligin_buttouns_task_list'>
 							<div class='buttons'>
-							<form method='POST'>
+							<a href='?c=index_controller&option=tasklist_controller?upd_ready=$out_task[id]'>
 								<input type='submit'
 								name='READY' value='READY' class='READY'
-								' id='$id_upd_ready'
+								'
 								>
-								</form>
+								</a>
 							</div>
 							<div class='buttons'>
 							
@@ -33,7 +32,6 @@ foreach ($out as $out_task) {
 }
 else
 { 
-	$id_upd_unready=$out_task['id'];
 	echo "<div class='Tasks'>
 			<div class='wrapper_for_task'>
 				<div class='info_task'>
@@ -42,12 +40,11 @@ else
 					</div>
 						<div class='aligin_buttouns_task_list'>
 							<div class='buttons'>
-							<form method='POST'>
+							<a href='?c=index_controller&option=tasklist_controller?upd_unready=$out_task[id]'>
 								<input type='submit' name='UNREADY'
-								value='UNREADY' class='UNREADY
-								'id='$id_upd_unready'>
+								value='UNREADY' class='UNREADY>
 								
-								</form>
+								</a>
 							</div>
 							<div class='buttons'>
 								
