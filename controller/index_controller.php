@@ -12,16 +12,21 @@ class index_controller
 				$model = new model($pdo);
 				$po = $model->log($_POST['auth'], $_POST['login'],$_POST['password']);
 
-				if ($po==1) {
+				if ($po==1) 
+				{
 					header('Location: ?c=index_controller&option=tasklist');
 				}
-				elseif ($po==2) {
+				elseif ($po==2) 
+				{
 					header('Location: ?c=index_controller&option=tasklist');
 				}
-				elseif ($po==3) {
+				elseif ($po==3) 
+				{
+					
 					header('Location: ?c=index_controller&option=auth');
 				}
-				elseif ($po==4) {
+				elseif ($po==4) 
+				{
 					header('Location: ?c=index_controller&option=tasklist');
 				}
 				include 'view/form_auth.php';

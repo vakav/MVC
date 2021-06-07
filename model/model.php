@@ -85,26 +85,29 @@ class model extends pdoconnect{
 				$password=htmlspecialchars($pass_post);
 
 				$password = md5($password);
+				$query =("SELECT * FROM `users` WHERE login=:login");
+				$auth_query=$this->pdo->prepare($query);
+				$auth_query->execute(['login' =>$login]);
+				$true_user_login = $auth_query->rowCount();
 				$query =("SELECT * FROM `users` WHERE login=:login AND password=:password");
 				$auth_query=$this->pdo->prepare($query);
 				$auth_query->execute(['login' =>$login, 'password'=>$password]);
 				$true_user = $auth_query->rowCount();
 				$out_user =  $auth_query->fetch();
-		  if($true_user==1)
-			{
-				$_SESSION['user'] = ["id" => $out_user['id']];	 
-		   		//header('Location: ?c=index_controller&option=tasklist');
-				$link = "2";
-			}
-			else
-			{
-				$_SESSION['message']='ошибка';
-				//header('Location: ?c=index_controller&option=auth');
-				$link = "3";
-				
-			}
-				if($true_user==0)
-				{	
+
+			  	if($true_user_login==1){
+					if ($true_user==1) {
+						$_SESSION['user'] = ["id" => $out_user['id']];	 
+			   		//header('Location: ?c=index_controller&option=tasklist');
+					$link = "2";
+					}else {
+					$_SESSION['message']='ошибка';
+					//header('Location: ?c=index_controller&option=auth');
+					$link = "3";
+					}
+				}else{
+
+					
 					$login=htmlspecialchars($login_post);
 					$password=htmlspecialchars($pass_post);
 					$password = md5($password);
@@ -119,23 +122,20 @@ class model extends pdoconnect{
 						$true_user=$auth_user->rowCount();
 						$out_user=$auth_user->fetch();
 						$_SESSION['user'] = [
-			 		"id" => $out_user['id']];	 
-			 		//header('Location: ?c=index_controller&option=tasklist');
-			 		$link = "4";
-				}
-					
+			 			"id" => $out_user['id']];	 
+			 			//header('Location: ?c=index_controller&option=tasklist');
+			 			$link = "4";
+					}
+				}	
 				
-				}
+			} else {
+					
+					echo  "Invalid username or password!";
 			}
-			else 
-			{
-			
-				echo  "Invalid username or password!";
-			}
-		}
-		return $link;
+}
+	return $link;
 
-		}
+}
 
 
 
