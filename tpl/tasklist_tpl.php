@@ -12,8 +12,7 @@
 <a href=?c=index_controller&option=button_index>главная</a>
 	<div class="wrapper">
 		<?php
-		include "view/tasklist_view.php";
-
+			include "view/tasklist_view.php";
 		?>
 	</div>
 

@@ -6,7 +6,7 @@
     public $pdo;
     public function __construct()
     {
-         $host = '127.0.0.1';
+     $host = '127.0.0.1';
      $db   = 'task_list';
      $user = 'root';
      $pass = '';

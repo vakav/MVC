@@ -2,8 +2,7 @@
 session_start();
 
 include 'model/pdoconnect.php';
-spl_autoload_register(function ($c) 
-    {
+spl_autoload_register(function ($c) {
          if(file_exists('model/' . $c . '.php'))
         {
             require_once('model/' . $c . '.php');
@@ -13,7 +12,7 @@ spl_autoload_register(function ($c)
             require_once('controller/' . $c . '.php');
         }
         
-    });
+});
 
  
  
@@ -36,6 +35,6 @@ else {
  else {
  	var_dump($class);
  }
- 
+
  ?>
  
