@@ -20,11 +20,6 @@ class index_controller
 				{
 					header('Location: ?c=index_controller&option=tasklist');
 				}
-				elseif ($po==3) 
-				{
-					
-					header('Location: ?c=index_controller&option=auth');
-				}
 				elseif ($po==4) 
 				{
 					header('Location: ?c=index_controller&option=tasklist');

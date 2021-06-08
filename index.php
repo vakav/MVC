@@ -37,3 +37,5 @@ else {
  	var_dump($class);
  }
  
+ ?>
+ 
