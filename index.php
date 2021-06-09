@@ -17,7 +17,7 @@ spl_autoload_register(function ($c) {
  
  
 
-if($_GET['c'] && $_GET['option']) {
+if(!empty($_GET['c'] && $_GET['option'])) {
  $class = $_GET['c'];
  $option = $_GET['option'];
 }

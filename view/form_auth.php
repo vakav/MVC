@@ -23,11 +23,12 @@
 						<div class="aligin_in">
 							<input type="submit" name="auth" class="IN" value="Войти">
 						</div>
-						<div class="errors">
+						<div  class="errors">
 							<?php
-							if ($_SESSION['message']) {
-								echo $_SESSION['message'];
-								unset($_SESSION['message']);
+
+							if($_SESSION ['message']) {
+								echo   $_SESSION [ 'message' ];
+								unset ( $_SESSION [ 'message' ]);
 							}
 							?>
 						</div>
