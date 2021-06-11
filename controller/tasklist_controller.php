@@ -13,6 +13,7 @@ class tasklist_controller
         $out = $model->out_tasks($_SESSION['user']['id']);
         include "tpl/tasklist_tpl.php";
     }
+    
 }
 
 ?>

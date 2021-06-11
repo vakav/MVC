@@ -78,7 +78,6 @@ class model extends pdoconnect{
 					if ($true_user==1) {
 						$po=$_SESSION['user'] = ["id" => $out_user['id']];   
 						return $po;
-
 					}else{
 						$_SESSION['message']='ошибка';
 					}

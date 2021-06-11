@@ -6,7 +6,7 @@ class index_controller
 	{
 		include "view/index_view.php";
 	}
-
+	
 	public function auth()
 	{
 
