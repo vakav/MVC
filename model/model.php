@@ -55,9 +55,6 @@ class model extends pdoconnect{
 
 	public function log($auth_post,$login_post,$pass_post)
 	{       
-		if(isset($_SESSION['user'])){
-			$link=1;
-		}
 
 		if(isset($auth_post)){
 
@@ -79,8 +76,8 @@ class model extends pdoconnect{
 
 				if($true_user_login==1){
 					if ($true_user==1) {
-						$_SESSION['user'] = ["id" => $out_user['id']];   
-						$link = 2;
+						$po=$_SESSION['user'] = ["id" => $out_user['id']];   
+						return $po;
 
 					}else{
 						$_SESSION['message']='ошибка';
@@ -99,9 +96,9 @@ class model extends pdoconnect{
 						$auth_user->execute(['login' =>$login, 'password'=>$password]);
 						$true_user=$auth_user->rowCount();
 						$out_user=$auth_user->fetch();
-						$_SESSION['user'] = [
+						$po=$_SESSION['user'] = [
 							"id" => $out_user['id']];    
-							$link = 4;
+							return $po;
 						}
 					}   
 
@@ -109,7 +106,6 @@ class model extends pdoconnect{
 					echo  "Invalid username or password!";
 				}
 			}   
-			return $link;
+		}
 	}
-}
 ?>

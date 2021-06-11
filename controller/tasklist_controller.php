@@ -11,11 +11,8 @@ class tasklist_controller
         $model->ready_all($_POST['ready_all'],$_SESSION['user']['id']);
         $model->remove_all($_SESSION['user']['id'],$_POST['remove_all']);
         $out = $model->out_tasks($_SESSION['user']['id']);
-        
         include "tpl/tasklist_tpl.php";
     }
-    
-
 }
 
 ?>

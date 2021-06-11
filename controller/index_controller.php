@@ -1,4 +1,5 @@
 <?php
+session_start();
 class index_controller
 {
 	public function button_index()
@@ -9,25 +10,25 @@ class index_controller
 	public function auth()
 	{
 
-		$model = new model();
-		if(!empty($_POST)) {
-			$po = $model->log($_POST['auth'], $_POST['login'],$_POST['password']);
-		}
-		if ($po==1) 
-		{
+		if(isset($_SESSION['user'])){
 			header('Location: ?c=tasklist_controller&option=tasklist');
 		}
-		elseif ($po==2) 
-		{
-			header('Location: ?c=tasklist_controller&option=tasklist');
-		}
-		elseif ($po==4) 
-		{
-			header('Location: ?c=tasklist_controller&option=tasklist');
-		}
+		else{
 
-		include 'view/form_auth.php';
+			$model = new model();
+			if(!empty($_POST['auth']) &&  !empty($_POST['login']) && !empty($_POST['password'])) {
+				$po = $model->log($_POST['auth'], $_POST['login'],$_POST['password']);
+			}
+			elseif ($po=$po) 
+			{
+				header('Location: ?c=tasklist_controller&option=tasklist');
+			}
+			
+
+			include 'view/form_auth.php';
+		}
 	}
+	
 	public function logout()
 	{
 		session_start();
